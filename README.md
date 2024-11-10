@@ -4,16 +4,6 @@ DealFinder is a web application that simplifies complex Terms and Conditions, ma
 
 This project is built with [Next.js](https://nextjs.org) and includes authentication, an interactive Terms and Conditions analyzer, and user-friendly navigation.
 
----
-
-## Table of Contents
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [API Documentation](#api-documentation)
-- [Learn More](#learn-more)
-- [Deployment](#deployment)
 
 ---
 
@@ -29,9 +19,10 @@ This project is built with [Next.js](https://nextjs.org) and includes authentica
 
 ## Screenshots
 
-![Homepage](path-to-homepage-screenshot)
-![Terms Analysis](path-to-terms-analysis-screenshot)
-![Trust Assessment](path-to-trust-assessment-screenshot)
+![image](https://github.com/user-attachments/assets/7f0aeb1e-d560-47a8-b94a-1c4a1c21e3a1)
+![image](https://github.com/user-attachments/assets/a126cef0-fe75-4fe0-8c6e-ed55a8995716)
+![image](https://github.com/user-attachments/assets/68490c0c-9472-4877-98e7-0ce22cfeceba)
+
 
 ---
 
@@ -133,12 +124,6 @@ The easiest way to deploy DealFinder is to use [Vercel](https://vercel.com/), th
 4. Deploy!
 
 For more details, check out the [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying).
-
----
-
-## Contributing
-
-If you’d like to contribute to DealFinder, please fork the repository and create a pull request. Your contributions are greatly appreciated!
 
 ---
 
