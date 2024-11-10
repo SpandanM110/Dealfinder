@@ -23,9 +23,9 @@ const ProcessTerms = () => {
     try {
       const response = await axios.post('/api/gemini', { input, type: 'analyze' });
       setAnalyzeResult(response.data.response);
-    } catch (err: any) {
+    } catch (err: Error) {
       console.error('Analyze Operation Error:', err);
-      setError(err.response?.data?.message || 'Failed to analyze the terms and conditions.');
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -45,9 +45,9 @@ const ProcessTerms = () => {
     try {
       const response = await axios.post('/api/gemini', { input, type: 'trust assessment' });
       setTrustResult(response.data.response);
-    } catch (err: any) {
+    } catch (err: Error) {
       console.error('Trust Assessment Operation Error:', err);
-      setError(err.response?.data?.message || 'Failed to assess the trustworthiness of the terms and conditions.');
+      setError(err.message);
     } finally {
       setLoading(false);
     }

@@ -20,9 +20,9 @@ const SummarizeTerms = () => {
     try {
       const response = await axios.post('/api/gemini', { input, type: 'summarize' });
       setSummary(response.data.response);
-    } catch (err: any) {
+    } catch (err: Error) {
       console.error('Summarization Error:', err);
-      setError(err.response?.data?.message || 'Failed to fetch the summary.');
+      setError(err.message);
     } finally {
       setLoading(false);
     }

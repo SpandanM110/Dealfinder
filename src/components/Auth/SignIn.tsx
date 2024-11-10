@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { auth } from '../../utils/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/router';
-import { FirebaseError } from 'firebase/app'; // Import FirebaseError
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +14,7 @@ const SignIn = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push('/');
-    } catch (err: FirebaseError) {  // Use FirebaseError type here
+    } catch (err: any) {
       setError(err.message);
     }
   };

@@ -50,7 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } else if (type === 'analyze') {
       instruction = `Analyze the following Terms and Conditions. Identify risks and positive aspects. Conclude with a "good to go" or "bad to proceed" recommendation.`;
     } else {
-      instruction = `Review the following Terms and Conditions. Provide a clear assessment of whether it's "good to go" or "bad to proceed."`;
+      instruction = `Review the following Terms and Conditions. Identify the positive and negative aspects, and give a recommendation of whether it's "good to go" or "bad to proceed."`;
     }
 
     const message = `${instruction}\n\n${input}`;
@@ -63,7 +63,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } else {
       throw new Error('No summary generated.');
     }
-  } catch (error: any) {
+  } catch (error: Error) {
     console.error('Gemini API Error:', error);
     return res.status(500).json({ message: error.message || 'An unexpected error occurred.' });
   }
