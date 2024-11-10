@@ -1,3 +1,5 @@
+// src/components/Deal/SummarizeTerms.tsx
+
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -8,6 +10,7 @@ const SummarizeTerms = () => {
   const [error, setError] = useState<string>('');
 
   const handleSummarize = async () => {
+    // Input validation
     if (input.trim() === '') {
       setError('Please enter the terms and conditions.');
       return;
@@ -18,11 +21,14 @@ const SummarizeTerms = () => {
     setSummary('');
 
     try {
+      // Send POST request to /api/gemini
       const response = await axios.post('/api/gemini', { input, type: 'summarize' });
+
+      // Update the summary state with the response
       setSummary(response.data.response);
-    } catch (err: Error) {
+    } catch (err: unknown) { // Updated catch block
       console.error('Summarization Error:', err);
-      setError(err.message);
+      setError('Failed to fetch the summary.');
     } finally {
       setLoading(false);
     }
