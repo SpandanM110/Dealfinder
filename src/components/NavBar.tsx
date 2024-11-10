@@ -1,4 +1,5 @@
 // src/components/NavBar.tsx
+
 import Link from 'next/link';
 import Logout from './Auth/Logout';
 import { useAuth } from './Auth/AuthProvider';
@@ -12,17 +13,27 @@ const NavBar = () => {
 
   return (
     <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
-      <Link href="/" className={`text-xl font-bold ${isActive('/') ? 'underline' : ''}`}>
-        DealFinder
+      <Link href="/" legacyBehavior>
+        <a className={`text-xl font-bold ${isActive('/') ? 'underline' : ''}`}>
+          DealFinder
+        </a>
       </Link>
-      <div>
+
+      <div className="flex space-x-4">
+        <Link href="/" legacyBehavior>
+          <a className={`${isActive('/') ? 'underline' : ''}`}>Home</a>
+        </Link>
+        <Link href="/about" legacyBehavior>
+          <a className={`${isActive('/about') ? 'underline' : ''}`}>About</a>
+        </Link>
+
         {!loading && !user && (
           <>
-            <Link href="/auth/signin" className={`mr-4 ${isActive('/auth/signin') ? 'underline' : ''}`}>
-              Sign In
+            <Link href="/auth/signin" legacyBehavior>
+              <a className={`${isActive('/auth/signin') ? 'underline' : ''}`}>Sign In</a>
             </Link>
-            <Link href="/auth/signup" className={`${isActive('/auth/signup') ? 'underline' : ''}`}>
-              Sign Up
+            <Link href="/auth/signup" legacyBehavior>
+              <a className={`${isActive('/auth/signup') ? 'underline' : ''}`}>Sign Up</a>
             </Link>
           </>
         )}
