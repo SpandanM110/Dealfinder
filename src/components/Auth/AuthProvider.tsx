@@ -1,13 +1,12 @@
-// src/components/Auth/AuthProvider.tsx
 import { createContext, useContext, ReactNode } from 'react';
-import { User, FirebaseError } from 'firebase/auth';
+import { User } from 'firebase/auth';  // Only import User
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../utils/firebase';
 
 interface AuthContextProps {
   user: User | null;
   loading: boolean;
-  error: FirebaseError | null;
+  error: Error | null;  // Use Error type for general error handling
 }
 
 const AuthContext = createContext<AuthContextProps>({
