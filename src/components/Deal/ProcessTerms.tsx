@@ -1,5 +1,3 @@
-// src/components/Deal/ProcessTerms.tsx
-
 import { useState } from 'react';
 import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
@@ -11,7 +9,6 @@ const ProcessTerms = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
-  // Handler for Analyze Operation
   const handleAnalyze = async () => {
     if (input.trim() === '') {
       setError('Please enter the terms and conditions.');
@@ -34,7 +31,6 @@ const ProcessTerms = () => {
     }
   };
 
-  // Handler for Trust Assessment Operation
   const handleTrustAssessment = async () => {
     if (input.trim() === '') {
       setError('Please enter the terms and conditions.');
@@ -66,7 +62,7 @@ const ProcessTerms = () => {
         placeholder="Paste the terms and conditions here..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        maxLength={10000} // Increased limit for longer documents
+        maxLength={10000}
       ></textarea>
       <div className="flex space-x-4 mb-4">
         <button
@@ -90,7 +86,6 @@ const ProcessTerms = () => {
       </div>
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
-      {/* Display Analyze Result */}
       {analyzeResult && (
         <div className="mb-4 p-2 border rounded bg-gray-100">
           <h3 className="text-xl mb-2">Analysis:</h3>
@@ -98,7 +93,6 @@ const ProcessTerms = () => {
         </div>
       )}
 
-      {/* Display Trust Assessment Result */}
       {trustResult && (
         <div className="mb-4 p-2 border rounded bg-gray-100">
           <h3 className="text-xl mb-2">Trust Assessment:</h3>

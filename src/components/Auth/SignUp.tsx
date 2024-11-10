@@ -1,8 +1,8 @@
-// src/components/Auth/SignUp.tsx
 import { useState } from 'react';
 import { auth } from '../../utils/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import { FirebaseError } from 'firebase/app'; // Import FirebaseError
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ const SignUp = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       router.push('/');
-    } catch (err: any) {
+    } catch (err: FirebaseError) { // Use FirebaseError type here
       setError(err.message);
     }
   };
@@ -31,7 +31,7 @@ const SignUp = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-        /><br/>
+        /><br />
         <input
           type="password"
           placeholder="Password"
@@ -39,7 +39,7 @@ const SignUp = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-        /><br/>
+        /><br />
         <button type="submit" className="w-full p-2 bg-blue-500 text-white">Sign Up</button>
       </form>
       {error && <p className="text-red-500 mt-2">{error}</p>}
