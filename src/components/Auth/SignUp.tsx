@@ -14,8 +14,12 @@ const SignUp = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       router.push('/');
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {  // Changed `any` to `unknown`
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unexpected error occurred.');
+      }
     }
   };
 

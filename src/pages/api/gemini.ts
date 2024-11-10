@@ -46,11 +46,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     let instruction = '';
 
     if (type === 'summarize') {
-      instruction = `Summarize the following Terms and Conditions. Highlight unfavorable terms like hidden fees or data sharing. Indicate whether it's "good to go" or "bad to proceed."`;
+      instruction = `Summarize the following Terms and Conditions. Identify any terms that may be unfavorable to the user (e.g., data sharing, non-refundable fees, or limitations of liability) and highlight favorable terms (e.g., easy account termination or transparent pricing). Conclude with a clear indication of whether it is generally "good to go" or "bad to proceed" based on the overall risk to the user.`;
     } else if (type === 'analyze') {
-      instruction = `Analyze the following Terms and Conditions. Identify risks and positive aspects. Conclude with a "good to go" or "bad to proceed" recommendation.`;
+      instruction = `Analyze the following Terms and Conditions in detail. Identify terms that may pose risks to the user, such as strict cancellation policies, hidden fees, data-sharing practices, and mandatory arbitration clauses. Also, highlight any positive terms, like strong data privacy protections, fair refund policies, and flexible account options. Conclude with a recommendation that explains whether the terms make it "good to go" or "bad to proceed" and provide reasons for your assessment.`;
     } else {
-      instruction = `Review the following Terms and Conditions. Identify the positive and negative aspects, and give a recommendation of whether it's "good to go" or "bad to proceed."`;
+      instruction = `Review the following Terms and Conditions. Identify any positive aspects as well as potential risks, and give a recommendation indicating if it is "good to go" or "bad to proceed" based on your assessment.`;
     }
 
     const message = `${instruction}\n\n${input}`;
@@ -63,8 +63,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } else {
       throw new Error('No summary generated.');
     }
-  } catch (error: Error) {
+  } catch (error: unknown) {
     console.error('Gemini API Error:', error);
-    return res.status(500).json({ message: error.message || 'An unexpected error occurred.' });
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message || 'An unexpected error occurred.' });
+    }
+    return res.status(500).json({ message: 'An unexpected error occurred.' });
   }
 }

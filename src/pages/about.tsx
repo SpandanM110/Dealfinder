@@ -26,16 +26,16 @@ const AboutPage = () => {
           <ul className="list-disc list-inside space-y-2">
             <li><strong>Summarize:</strong> Get a quick, user-friendly summary of Terms and Conditions.</li>
             <li><strong>Analyze:</strong> Discover potential risks, hidden fees, and other concerns.</li>
-            <li><strong>Trust Assessment:</strong> Receive a clear recommendation on whether it’s "good to go" or "bad to proceed."</li>
+            <li><strong>Trust Assessment:</strong> Receive a clear recommendation on whether its good to go or bad to proceed.</li>
           </ul>
         </section>
   
         <section className="mb-6">
           <h2 className="text-2xl font-semibold mb-2">Why Choose DealFinder?</h2>
           <p>
-            In today's world, businesses often present complex agreements. DealFinder is here to simplify this 
+            In todays world, businesses often present complex agreements. DealFinder is here to simplify this 
             experience by providing a tool that ensures transparency, safeguards user rights, and promotes 
-            informed decisions. Whether you're signing up for a subscription, making a major purchase, 
+            informed decisions. Whether you are signing up for a subscription, making a major purchase, 
             or agreeing to new terms, DealFinder has you covered.
           </p>
         </section>
